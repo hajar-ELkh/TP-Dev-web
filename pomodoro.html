@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Pomodoro Timer</title>
+       <link rel="stylesheet" href="style.css">
+
+       <style>
+         html {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  min-height: 100vh;
+  color: #d8e9ef;
+  background-image: url('photo/back.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* Conteneur principal */
+.container {
+  width: 280px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Conteneur du timer */
+.timer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+}
+
+/* Cercle du timer */
+.circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid #b04a3f;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Affichage du temps centré dans le cercle */
+#timeDisplay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5em;
+  font-weight: bold;
+  color: white;
+}
+
+/* Alignement des boutons */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.controls button {
+  padding: 10px 15px;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
+}
+
+/* Couleurs des boutons */
+#start { background-color: #611e0f; color: white; }
+#pause { background-color: #bf5239; color: white; }
+#reset { background-color: #941f05; color: white; }
+
+
+
+
+       </style>
+   </head>
+
+
+   
+  
+ <body> 
+   <header class="header">
+      <div class="header-content">
+          <div class="logo">STUDY WITH ME</div>
+          <nav class="nav">
+              <ul>
+                  <li><a href="portfolio.html">Accueil</a></li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+
+   <div class="container">
+      <div class="logo">POMODORO</div>
+       <div class="timer">
+         <div class="circle"></div>
+         <span id="timeDisplay">25:00</span>
+      </div>
+      <div class="controls">
+      <button id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
+      </div>
+   </div>
+
+   <audio id="alarmSound" preload="auto">
+      <source src="alarm.mp3" type="audio/mpeg">
+  </audio>
+
+   <script src="main.js"> </script>
+ </body>
+ </html>
+
+
+
