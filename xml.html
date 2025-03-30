@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage XML</title>
+</head>
+<body>
+    <div id="demo1"></div> 
+
+    <script>
+        var pers, parser, xmlDoc;
+    
+        pers = "<les_personnes>" +
+            "<person>" +
+                "<gender>Male</gender>" +
+                "<lastName>hamid</lastName>" +
+                "<firstName>hamza</firstName>" +
+                "<address>khouribga</address>" +
+                "<phone>0612345678</phone>" +
+                "<email>hamid@gmail.com</email>" +
+            "</person>" +
+            "<person>" +
+                "<gender>female</gender>" +
+                "<lastName>ari</lastName>" +
+                "<firstName>zineb</firstName>" +
+                "<address>benimellal</address>" +
+                "<phone>0634562334</phone>" +
+                "<email type='personal'>zineb@gmail.com</email>" +
+                "<email type='business'>zinebari@gmail.com</email>" +
+            "</person>" +
+            "<person>" +
+                "<gender>female</gender>" +
+                "<lastName>taleb</lastName>" +
+                "<firstName>basma</firstName>" +
+                "<address>casa</address>" +
+                "<phone>0697867858</phone>" +
+                "<email type='personal'>basma@gmail.com</email>" +
+                "<email type='business'>basmataleb@gmail.com</email>" +
+            "</person>" +
+        "</les_personnes>";
+    
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(pers, "text/xml");
+    
+        var persons = xmlDoc.getElementsByTagName("person");
+        var output = "";
+
+        for (var i = 0; i < persons.length; i++) {
+            var gender = persons[i].getElementsByTagName("gender")[0].textContent;
+            var lastName = persons[i].getElementsByTagName("lastName")[0].textContent.trim();
+            var firstName = persons[i].getElementsByTagName("firstName")[0].textContent.trim();
+            var address = persons[i].getElementsByTagName("address")[0].textContent.trim();
+            var phone = persons[i].getElementsByTagName("phone")[0].textContent.trim();
+            var emails = persons[i].getElementsByTagName("email");
+            var emailPersonal = "Non disponible";
+            var emailBusiness = "Non disponible";
+
+            for (var j = 0; j < emails.length; j++) {
+                var type = emails[j].getAttribute("type");
+                if (type === "personal") {
+                    emailPersonal = emails[j].textContent;
+                } else if (type === "business") {
+                    emailBusiness = emails[j].textContent;
+                }
+            }
+
+            // Construire le contenu à afficher
+            output += "<p><strong>Personne " + (i + 1) + ":</strong><br>" +
+                      "Nom: " + lastName + "<br>" +
+                      "Prénom: " + firstName + "<br>" +
+                      "Genre: " + gender + "<br>" +
+                      "Adresse: " + address + "<br>" +
+                      "Téléphone: " + phone + "<br>" +
+                      "Email Personnel: " + emailPersonal + "<br>" +
+                      "Email Professionnel: " + emailBusiness + "<br>" +
+                      "</p>";
+        }
+
+        document.getElementById("demo1").innerHTML = output; // Affichage sur la page
+    </script>
+
+</body>
+</html>

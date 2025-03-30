@@ -1,6 +1,6 @@
 let timer;
-let minutes = 25;
-let seconds = 0;
+let minutes = 0;
+let seconds = 3;
 let isRunning = false;
 let workSessionsCompleted = 0;
 
@@ -78,8 +78,8 @@ function startBreak(breakMinutes) {
 // Fonction pour réinitialiser le timer
 function resetTimer() {
     clearInterval(timer);
-    minutes = 25;
-    seconds = 0;
+    minutes = 0;
+    seconds = 3;
     isRunning = false;
     workSessionsCompleted = 0;
     updateTime();
